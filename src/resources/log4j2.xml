@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Properties>
+    	<Property name="debugfilename">${sys:catalina.home}/logs/debug.log</Property>
+    	<Property name="infofilename">${sys:catalina.home}/logs/info.log</Property>
+  	</Properties>
+  	<Appenders>
+<!--   		<Console name = "consoleLog">
+  			<PatternLayout pattern = "[%-5level] %d{HH:mm:ss.SSS} - %msg%n" />
+  			<ThresholdFilter level = "info" />
+  		</Console> -->
+  		<File name = "debugfileLog" fileName = "${debugfilename}">
+  			<PatternLayout pattern = "[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+  			<Filters>
+  				<ThresholdFilter level = "debug" />
+  				<LevelRangeFilter minLevel = "info" maxLevel = "info" onMatch = "DENY" onMismatch = "NEUTRAL"/>	
+  			</Filters>
+  		</File>
+  		<File name = "infofileLog" fileName = "${infofilename}" append = "false">
+  			<PatternLayout pattern = "[%-5level] %d{HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+  			<Filters>
+  				<LevelRangeFilter minLevel = "info" maxLevel = "info" onMatch = "ACCEPT" onMismatch = "DENY"/>	
+  			</Filters>
+  		</File>
+  	</Appenders>
+  	<Loggers>
+		<Logger name = "com.epam.conference" level ="debug" additivity = "false">
+			<AppenderRef ref = "debugfileLog" />
+			<AppenderRef ref = "infofileLog" />
+			<!-- <AppenderRef ref = "consoleLog"/> -->
+		</Logger>
+		<Root level = "error">
+			<AppenderRef ref = "debugfileLog"/>
+		</Root>
+	</Loggers>
+</Configuration>

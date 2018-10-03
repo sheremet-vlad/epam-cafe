@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Conference Manage Webapp Tests">
+	<test name="Individual Tests">
+		<classes>
+				<class
+				name="test.com.epam.conference.util.PasswordEncryptorTest" />
+				<class
+				name="test.com.epam.conference.util.InputValidatorTest" />
+				<class
+				name="test.com.epam.conference.db.ConnectionPoolTest" />
+		</classes>
+	</test>
+</suite>
